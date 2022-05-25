@@ -4,6 +4,8 @@ import './DetailsForm.css'
 let primaryhost:any= "https://www.dmzee.co.za/"
 let contact_type_id:any = 2
 const DetailsForm = () =>{
+
+    
     const firstName:any    =useRef<HTMLIonInputElement>(null)
     const middleName:any   =useRef<HTMLIonInputElement>(null)
     const surName:any      =useRef<HTMLIonInputElement>(null)
