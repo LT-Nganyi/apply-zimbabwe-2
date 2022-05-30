@@ -4,6 +4,8 @@ import './DetailsForm.css'
 let primaryhost:any= "https://www.dmzee.co.za/"
 let contact_type_id:any = 2
 const DetailsForm = () =>{
+
+    
     const firstName:any    =useRef<HTMLIonInputElement>(null)
     const middleName:any   =useRef<HTMLIonInputElement>(null)
     const surName:any      =useRef<HTMLIonInputElement>(null)
@@ -77,52 +79,6 @@ const DetailsForm = () =>{
             
         })
     }
-    const callListLevel = (parent_id:any) =>{
-        var options:any=[]
-        fetch(primaryhost+"education/dbconnect/select.jsp?edu=select_list"+
-        "&parent_id="+parent_id+
-        "&list_id="+0,
-        {
-            headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8"}
-        }
-        )
-        .then(response => response.json())
-        .then(data => {
-            options.push(data.data)
-          //  if (parent_id==114){
-                var list:any=options[0].map((x:any,i:number)=>{
-                    return(
-                        <IonSelectOption key={i} value={x.id}>{x.list_desc}</IonSelectOption>
-                    )
-                })
-                setLevel(list)
-           // }
-            
-        })
-    }
-    const callListCert = (parent_id:any) =>{
-        var options:any=[]
-        fetch(primaryhost+"education/dbconnect/select.jsp?edu=select_list"+
-        "&parent_id="+parent_id+
-        "&list_id="+0,
-        {
-            headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8"}
-        }
-        )
-        .then(response => response.json())
-        .then(data => {
-            options.push(data.data)
-            if (parent_id==51){
-                var list:any=options[0].map((x:any,i:number)=>{
-                    return(
-                        <IonSelectOption key={i} value={x.id}>{x.list_desc}</IonSelectOption>
-                    )
-                })
-                setCertificate(list)
-            }
-            
-        })
-    }
     const callListCountry = (parent_id:any) =>{
         var options:any=[]
         fetch(primaryhost+"education/dbconnect/select.jsp?edu=select_list"+
@@ -156,12 +112,6 @@ const DetailsForm = () =>{
     const callCountry =()=>{
         callListCountry(108)
     }
-    const callCert =()=>{
-        callListCert(51)
-    }
-    const callLevel=()=>{
-        callListLevel(getQual)
-    }
     const insertDetails = (contact_type_id:any, firstName:any,middleName:any,surName:any,email:any,password:any) =>{
         var options:any=[]
         fetch(primaryhost+"education/dbconnect/insert.jsp?edu=insert_contact"+
@@ -187,15 +137,9 @@ const DetailsForm = () =>{
         callTown()
     },[])
     React.useEffect(()=>{
-        callCert()
-    },[])
-    React.useEffect(()=>{
         callCountry()
     },[])
     
-    React.useEffect(()=>{
-        callLevel()
-    },[])
     return(
         <div>
             <div className="details detail-1">
@@ -289,29 +233,6 @@ const DetailsForm = () =>{
                             <IonRadio value="Female"></IonRadio>
                         </IonItem>
                     </IonRadioGroup>
-                </IonCol>
-            </IonRow>
-            <IonRow>
-                <IonLabel className = "section-color">Education Details</IonLabel>
-            </IonRow>
-            <IonRow>
-                <IonCol size="3">
-                    <IonItem>
-                        <IonLabel position= "floating">Qualification</IonLabel>
-                        <IonSelect onIonChange={(e)=>{setQual(e.detail.value);callListLevel(e.detail.value)}} ref={certificate}>{getCertificate}</IonSelect>
-                    </IonItem>
-                </IonCol>
-                <IonCol size = "3">
-                    <IonItem>
-                        <IonLabel position= "floating">Level</IonLabel>
-                        <IonSelect ref={level}>{getLevel}</IonSelect>
-                    </IonItem>
-                </IonCol>
-                <IonCol size = "3">
-                    <IonItem>
-                        <IonLabel position= "floating">Grade</IonLabel>
-                        <IonSelect ref={grade}>{getGrade}</IonSelect>
-                    </IonItem>
                 </IonCol>
             </IonRow>
             <IonRow>

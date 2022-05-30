@@ -8,6 +8,8 @@ let parent_id:any=0
 let list_id:any=0
 
 const ListAdmin = () =>{
+    
+    
     const[getList, setList]     =useState<HTMLIonRowElement>()
     const txtListDesc:any       =useRef<HTMLIonInputElement>(null)
     const txtListUpdate:any     =useRef<HTMLIonInputElement>(null)
@@ -153,3 +155,4 @@ const ListAdmin = () =>{
 }
 export default ListAdmin
 
+// Add stuff

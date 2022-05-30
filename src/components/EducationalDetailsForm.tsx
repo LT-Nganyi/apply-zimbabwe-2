@@ -7,12 +7,12 @@ let primaryhost:any= "https://www.dmzee.co.za/"
 
 const EducationalDetailsForm = ()=>{
     var level:any=  useRef<HTMLIonInputElement>(null)
-    var grade:any=  useRef<HTMLIonInputElement>(null)
-    const certificate:any    =useRef<HTMLIonInputElement>(null)
+    var grade:any                           =  useRef<HTMLIonInputElement>(null)
+    const certificate:any                   =useRef<HTMLIonInputElement>(null)
 
-    const [getLevel,setLevel]       =useState<HTMLIonSelectOptionElement>()
-    const[getCertificate,setCertificate]       =useState<HTMLIonSelectOptionElement>()
-    const[getQual,setQual]       =useState<HTMLIonSelectOptionElement>()
+    const [getLevel,setLevel]               =useState<HTMLIonSelectOptionElement>()
+    const[getCertificate,setCertificate]    =useState<HTMLIonSelectOptionElement>()
+    const[getQual,setQual]                  =useState<HTMLIonSelectOptionElement>()
     
     const callListCert = (parent_id:any) =>{
         var options:any=[]
@@ -99,3 +99,5 @@ const EducationalDetailsForm = ()=>{
     )
 }
 export default EducationalDetailsForm
+
+// added Something
