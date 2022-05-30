@@ -1,4 +1,4 @@
-import { IonButton, IonCol, IonInput, IonItem, IonLabel, IonRadio, IonRadioGroup, IonRow, IonSelect, IonSelectOption } from "@ionic/react"
+import { IonButton, IonCol, IonFooter, IonInput, IonItem, IonLabel, IonRadio, IonRadioGroup, IonRow, IonSelect, IonSelectOption } from "@ionic/react"
 import React, { useDebugValue, useRef, useState } from "react"
 import './DetailsForm.css'
 let primaryhost:any= "https://www.dmzee.co.za/"
