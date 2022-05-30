@@ -56,7 +56,7 @@ const DetailsForm = () =>{
     }
     const callListTown = (parent_id:any) =>{
         var options:any=[]
-        fetch(primaryhost+"education/dbconnect/select.jsp?edu=select_list"+
+        fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=select_list"+
         "&parent_id="+parent_id+
         "&list_id="+0,
         {
@@ -198,39 +198,51 @@ const DetailsForm = () =>{
     },[])
     return(
         <div>
-            <IonRow>
-                <IonCol className= "section-color size-24">
-                    Enter Details
-                </IonCol>
-            </IonRow>
-            <IonRow>
-                <IonCol size = "1">
-                    <IonItem>
-                        <IonLabel position="floating">Title</IonLabel>
-                        <IonSelect ref={salutation}>{getSalutationOption}</IonSelect>
-                    </IonItem>
-                </IonCol>
-            </IonRow>
-            <IonRow>
-                <IonCol size="2">
-                    <IonItem>
-                        <IonLabel position="floating">First Name</IonLabel>
-                        <IonInput type="text" ref={firstName} />
-                    </IonItem>
-                </IonCol>
-                <IonCol size="2">
-                    <IonItem>
-                        <IonLabel position="floating">Middle Name</IonLabel>
-                        <IonInput type="text" ref={middleName} />
-                    </IonItem>
-                </IonCol>
-                <IonCol size="2">
-                    <IonItem>
-                        <IonLabel position="floating">Surname</IonLabel>
-                        <IonInput type="text" ref={surName} />
-                    </IonItem>
-                </IonCol>
-            </IonRow>
+            <div className="details detail-1">
+                <IonRow>
+                    <IonCol className= "section-color size-24">
+                        Enter Details
+                    </IonCol>
+                </IonRow>
+                <IonRow>
+                    <IonCol size = "12">
+                        <IonItem>
+                            <IonLabel position="floating">Title</IonLabel>
+                            <IonSelect ref={salutation}>{getSalutationOption}</IonSelect>
+                        </IonItem>
+                    </IonCol>
+                </IonRow>
+                <IonRow>
+                    <IonCol size="12">
+                        <IonItem>
+                            <IonLabel position="floating">First Name</IonLabel>
+                            <IonInput type="text" ref={firstName} />
+                        </IonItem>
+                    </IonCol>
+                    <IonCol size="12">
+                        <IonItem>
+                            <IonLabel position="floating">Middle Name</IonLabel>
+                            <IonInput type="text" ref={middleName} />
+                        </IonItem>
+                    </IonCol>
+                    <IonCol size="12">
+                        <IonItem>
+                            <IonLabel position="floating">Surname</IonLabel>
+                            <IonInput type="text" ref={surName} />
+                        </IonItem>
+                    </IonCol>
+                </IonRow>
+                <IonFooter>
+                    <IonRow>
+                        <IonCol className="ion-text-left">
+                            <IonButton>Cancel</IonButton>
+                        </IonCol>
+                        <IonCol className="ion-text-right">
+                            <IonButton>Next</IonButton>
+                        </IonCol>
+                    </IonRow>
+                </IonFooter>
+            </div>
             <IonRow>
                 <IonLabel className='section-color' >Contact Details</IonLabel>
             </IonRow>
