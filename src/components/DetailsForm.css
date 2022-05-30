@@ -1,4 +1,20 @@
 
+.show-form{
+  display: block;
+}
+.hide-form{
+  display: none;
+}
+.details{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 40%;
+  height: 50vh;
+  position: absolute;
+  left: 30%;
+  top: 15%;
+
+}
 .ion-text-bold{
     font-weight: bold;
 }
