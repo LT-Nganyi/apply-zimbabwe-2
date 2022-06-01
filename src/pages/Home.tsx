@@ -16,7 +16,8 @@ const Home: React.FC = () => {
   const [hideEducationalDetailsForm,showEducationalDetailsForm] = useState<boolean>(false)
   const [hideLoginForm,showLoginForm]                           = useState<boolean>(false)
   const [getAdmin,setAdmin]                                     = useState<boolean>(false)
-  const [getLogin,setLogin]                                     = useState<boolean>(true)
+  const [getLogin,setLogin]                                     = useState<boolean>(false)
+  const [getUser,setUser]                                       = useState<boolean>(false)
   
   const setView = (v:any)=>{
     resetView()
@@ -52,7 +53,7 @@ const Home: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonRow>
-          {!getLogin &&
+          {getLogin &&
           <div>
             {getAdmin && 
             <div>
@@ -60,8 +61,12 @@ const Home: React.FC = () => {
               <IonCol onClick={()=>{setView(2)}} className="hover">List Contacts</IonCol>
             </div>
             }
+            {getUser&&
+            <div>
             <IonCol onClick={()=>{setView(3)}} className="hover">Details Form</IonCol>
             <IonCol onClick={()=>{setView(4)}} className='hover' >Education Details</IonCol>
+            </div>
+            }
             {/* <IonCol onClick={()=>{setView(5)}} className='hover' >Login Form</IonCol> */}
           </div>
           }
@@ -88,7 +93,12 @@ const Home: React.FC = () => {
         }
         {hideLoginForm &&
         <IonRow>
-          <IonCol><LoginForm state={(e:any)=>{userProperties=e;if(e.contact_type_id==2 || e.contact_type_id==18){setAdmin(true);setLogin(false)} }}/></IonCol>
+          <IonCol><LoginForm state={(e:any)=>{userProperties=e;
+            if(e.contact_type_id==2 || e.contact_type_id==18){resetView();setAdmin(true);setLogin(true);setUser(true)} 
+            else
+            {resetView();setLogin(true);setUser(true)}
+            }
+            }/></IonCol>
         </IonRow>
         }
       </IonContent>

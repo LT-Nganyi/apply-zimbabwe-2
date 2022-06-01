@@ -9,12 +9,13 @@ const EducationalDetailsForm = (props:any)=>{
     var ddlLevel:any                        =useRef<HTMLIonInputElement>(null)
     var ddlGrade:any                        =useRef<HTMLIonInputElement>(null)
     var ddlQualification:any                =useRef<HTMLIonInputElement>(null)
-
+    var contact_id:any = 0
 
     const [getLevel,setLevel]               =useState<HTMLIonSelectOptionElement>()
     const[getCertificate,setCertificate]    =useState<HTMLIonSelectOptionElement>()
     const[getQual,setQual]                  =useState<HTMLIonSelectOptionElement>()
     const [getGrade,setGrade]               =useState<HTMLIonSelectOptionElement>()
+    
     
     const[getQualifications,setQualifications] = useState<HTMLIonRowElement>()
     const callListCert = (parent_id:any) =>{
@@ -89,13 +90,14 @@ const EducationalDetailsForm = (props:any)=>{
     const callQualification = () =>{
         var options:any=[]
         fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=select_qualification"+
-        "&contact_id="+0,
+        "&contact_id="+props.userProperties.contact_id,
         {
             headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8"}
         }
         )
         .then(response => response.json())
         .then(data => {
+            // {alert('Contact_id='+props.userProperties.contact_id)}
             console.log(data)
             options.push(data.data)
             var headers:any=(<IonRow className="ion-text-bold size-18">
@@ -108,7 +110,7 @@ const EducationalDetailsForm = (props:any)=>{
             var list:any=options[0].map((x:any, i:number)=>{
                 return(
                     <IonRow key = {i}>
-                        <IonCol>{x.contact_id}</IonCol>
+                        <IonCol>{x.id}</IonCol>
                         <IonCol>{x.qualification_id}</IonCol>
                         <IonCol>{x.level_id}</IonCol>
                         <IonCol>{x.grade_id}</IonCol>
@@ -117,6 +119,10 @@ const EducationalDetailsForm = (props:any)=>{
             })
             combined=[headers, list]
             setQualifications(combined)
+        })
+        .catch(error=>{
+            var x:any = <div></div>
+            setQualifications(x)
         })
         
     }
@@ -139,8 +145,8 @@ const EducationalDetailsForm = (props:any)=>{
     }
     const insertQualification = () =>{
         var options:any=[]
-        fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=insert_contact_qualification"+
-        "&contact_id="+props.contact_id+
+        fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=insert_qualification_table"+
+        "&contact_id="+props.userProperties.contact_id+
         "&qualification_id="+ddlQualification.current!.value+
         "&level_id="+ddlLevel.current!.value+
         "&grade_id="+ddlGrade.current!.value,
@@ -171,8 +177,11 @@ const EducationalDetailsForm = (props:any)=>{
     },[])
     
     return(
-        <div>
+        <div className="education-box">
             <IonHeader> 
+                <IonRow>
+                    <IonCol className="ion-text-bold size-20">Education Details</IonCol>
+                </IonRow>
                 <IonRow>
                     <IonCol size="2">
                         <IonItem>
@@ -193,11 +202,11 @@ const EducationalDetailsForm = (props:any)=>{
                         </IonItem>
                     </IonCol>
                     <IonCol size="3">
-                        <IonButton onClick = {()=>{updateQualification()}}>Add Qualification</IonButton>
+                        <IonButton onClick = {()=>{insertQualification()}}>Add Qualification</IonButton>
                     </IonCol>
                 </IonRow>
             </IonHeader>
-            <IonContent>
+            <IonContent className="content-container">
                 {getQualifications}
             </IonContent>
         </div>

@@ -54,7 +54,7 @@ const LoginForm = (props:any) =>{
             {data.data[0].exists == 0?
                 alert("Login Failed!")
                 :
-                alert("Login Successful, Welcome to Apply Zimbabwe "+firstName)
+                alert("Login Successful, Welcome to Apply Zimbabwe "+contactId)
             }
         })
         
