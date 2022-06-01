@@ -8,14 +8,16 @@ import EducationalDetailsForm from '../components/EducationalDetailsForm';
 
 import './Home.css';
 import LoginForm from '../components/LoginForm';
-
+var userProperties:any  =[]
 const Home: React.FC = () => {
-  const[hideListAdmin,showListAdmin] =  useState<boolean>(false)
-  const[hideListContact,showListContact] =  useState<boolean>(false)
-  const[hideDetailsForm,showDetailsForm] =  useState<boolean>(false)
-  const[hideEducationalDetailsForm,showEducationalDetailsForm] = useState<boolean>(false)
-  const[hideLoginForm,showLoginForm] =  useState<boolean>(false)
-
+  const [hideListAdmin,showListAdmin]                           = useState<boolean>(false)
+  const [hideListContact,showListContact]                       = useState<boolean>(false)
+  const [hideDetailsForm,showDetailsForm]                       = useState<boolean>(false)
+  const [hideEducationalDetailsForm,showEducationalDetailsForm] = useState<boolean>(false)
+  const [hideLoginForm,showLoginForm]                           = useState<boolean>(false)
+  const [getAdmin,setAdmin]                                     = useState<boolean>(false)
+  const [getLogin,setLogin]                                     = useState<boolean>(true)
+  
   const setView = (v:any)=>{
     resetView()
     switch(v){
@@ -33,6 +35,9 @@ const Home: React.FC = () => {
     showEducationalDetailsForm(false)
     showLoginForm(false)
   }
+  React.useEffect(()=>{
+    showLoginForm(true)
+  },[])
   return (
     <IonPage>
       <IonHeader>
@@ -47,11 +52,19 @@ const Home: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonRow>
-          <IonCol onClick={()=>{setView(1)}}className="hover">List Admin</IonCol>
-          <IonCol onClick={()=>{setView(2)}} className="hover">List Contacts</IonCol>
-          <IonCol onClick={()=>{setView(3)}} className="hover">Details Form</IonCol>
-          <IonCol onClick={()=>{setView(4)}} className='hover' >Education Details</IonCol>
-          <IonCol onClick={()=>{setView(5)}} className='hover' >Login Form</IonCol>
+          {!getLogin &&
+          <div>
+            {getAdmin && 
+            <div>
+              <IonCol onClick={()=>{setView(1)}}className="hover">List Admin</IonCol>
+              <IonCol onClick={()=>{setView(2)}} className="hover">List Contacts</IonCol>
+            </div>
+            }
+            <IonCol onClick={()=>{setView(3)}} className="hover">Details Form</IonCol>
+            <IonCol onClick={()=>{setView(4)}} className='hover' >Education Details</IonCol>
+            {/* <IonCol onClick={()=>{setView(5)}} className='hover' >Login Form</IonCol> */}
+          </div>
+          }
         </IonRow>
         {hideListAdmin &&
         <IonRow>
@@ -70,12 +83,12 @@ const Home: React.FC = () => {
         }
         {hideEducationalDetailsForm &&
         <IonRow>
-          <IonCol><EducationalDetailsForm/></IonCol>
+          <IonCol><EducationalDetailsForm userProperties={userProperties}/></IonCol>
         </IonRow>
         }
         {hideLoginForm &&
         <IonRow>
-          <IonCol><LoginForm/></IonCol>
+          <IonCol><LoginForm state={(e:any)=>{userProperties=e;if(e.contact_type_id==2 || e.contact_type_id==18){setAdmin(true);setLogin(false)} }}/></IonCol>
         </IonRow>
         }
       </IonContent>

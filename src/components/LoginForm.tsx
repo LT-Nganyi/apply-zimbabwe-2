@@ -2,10 +2,21 @@ import { IonButton, IonCol, IonFooter, IonHeader, IonInput, IonItem, IonLabel, I
 import React, { useDebugValue, useRef, useState } from "react"
 let primaryhost:any= "https://www.dmzee.co.za/"
 
-const LoginForm = () =>{
+const LoginForm = (props:any) =>{
 
     const txtEmail      =useRef<HTMLIonInputElement>(null)
     const txtPassword   =useRef<HTMLIonInputElement>(null)
+    var contactId:any   =0
+    var contactTypeId:any
+    var email:any
+    var firstName:any
+    var middleName:any
+    var surname:any
+    var mobileNumber:any
+    var salutationId:any
+    var idNumber:any
+    var idTypeId:any
+    var genderId:any
 
     const callLogin = () =>{
         var options:any=[]
@@ -18,16 +29,33 @@ const LoginForm = () =>{
         )
         .then(response => response.json())
         .then(data => {
-            options.push(data.data)
-           
-                var list:any=options[0].map((x:any,i:number)=>{
-                    return(
-                        <IonSelectOption key={i} value={x.id}>{x.list_desc}</IonSelectOption>
-                    )
-                })
-                // setGenderOption(list)
-           
+
+            var state:any   = {
+                contact_id:data.data[0].contact_id,
+                contact_type_id:data.data[0].contact_type_id,
+                email:data.data[0].email,
+                forename:data.data[0].forename,
+                surname:data.data[0].surname
+            }
+            props.state(state)
+            contactId       = data.data[0].contact_id
+            contactTypeId   = data.data[0].contact_type_id
+            email           = data.data[0].email
+            firstName       = data.data[0].forename
+            middleName      = data.data[0].middle_name
+            surname         = data.data[0].surname
+            mobileNumber    = data.data[0].number
+            salutationId    = data.data[0].salutation_id
+            idNumber        = data.data[0].id_number
+            idTypeId        = data.data[0].id_type_id
+            genderId        = data.data[0].gender_id
             
+            
+            {data.data[0].exists == 0?
+                alert("Login Failed!")
+                :
+                alert("Login Successful, Welcome to Apply Zimbabwe "+firstName)
+            }
         })
         
     }
