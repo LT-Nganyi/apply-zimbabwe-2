@@ -1,18 +1,14 @@
-import { IonButton, IonCheckbox, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonRow, IonSelect, IonSelectOption } from "@ionic/react"
-import { checkbox } from "ionicons/icons"
-import React, { useRef, useState } from "react"
-import $ from 'jquery'
-import './EducationalDetailsForm.css';
-let primaryhost:any= "https://www.dmzee.co.za/"
+import { IonButton, IonCol, IonContent, IonFooter, IonHeader, IonInput, IonItem, IonLabel, IonRow, IonSelect, IonSelectOption } from "@ionic/react"
+import React ,{ useRef, useState } from "react"
+import './Search.css';
 
+let primaryhost:any = "https://www.dmzee.co.za/"
+const Search = ()=>{
 
-
-const EducationalDetailsForm = (props:any)=>{
     var ddlLevel:any                        =useRef<HTMLIonInputElement>(null)
     var ddlGrade:any                        =useRef<HTMLIonInputElement>(null)
     var ddlQualification:any                =useRef<HTMLIonInputElement>(null)
     var ddlSubject:any                      =useRef<HTMLIonInputElement>(null)
-    var contact_id:any = 0
 
     const [getLevel,setLevel]                        =useState<HTMLIonSelectOptionElement>()
     const [getCertificate,setCertificate]            =useState<HTMLIonSelectOptionElement>()
@@ -20,20 +16,7 @@ const EducationalDetailsForm = (props:any)=>{
     const [getGrade,setGrade]                        =useState<HTMLIonSelectOptionElement>()
     const [getSubjectList,setSubjectList]            =useState<HTMLIonSelectOptionElement>()
     const [getSubjectParent,setSubjectParent]        =useState<HTMLIonSelectOptionElement>()
-    const [getClick,setClick]                        =useState<boolean>(false)
-    const [getId,setId]                              =useState<any>("0")
-    const [getIsChecked,setIsChecked]                =useState<string>('text-grey')
-    const[getQualifications,setQualifications] = useState<HTMLIonRowElement>()
-
-    const setSelected=(id:any)=>{
-        var x:any = document.getElementsByClassName("row_"+id)
-        $(x[0]).addClass("text-green")
-    }
-    const resetSelected=(id:any)=>{
-        var x:any = document.getElementsByClassName("row_"+id)
-        $(x[0]).removeClass("text-green")
-        $(x[0]).addClass("text-black")
-    }
+    const [getListSearch,setListSearch]                 =useState<HTMLIonRowElement>()
     const callListCert = (parent_id:any) =>{
         var options:any=[]
         fetch(primaryhost+"education/dbconnect/select.jsp?edu=select_list"+
@@ -126,10 +109,18 @@ const EducationalDetailsForm = (props:any)=>{
             
         })
     }
-    const callQualification = () =>{
+    const callListSearch=()=>{
         var options:any=[]
-        fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=select_qualification"+
-        "&contact_id="+props.userProperties.contact_id,
+        fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=search_contact_qualification"+
+        "&qualification_id="+ddlQualification.current!.value+
+        "&level_id="+ddlLevel.current!.value+
+        "&grade_id="+ddlGrade.current!.value+
+        "&subject_id="+ddlSubject.current!.value,
+        // fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=search_contact_qualification"+
+        // "&qualification_id="+ddlQualification.current!.value+
+        // "&level_id="+ddlLevel.current!.value+
+        // "&grade_id="+0+
+        // "&subject_id="+0,
         {
             headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8"}
         }
@@ -152,7 +143,7 @@ const EducationalDetailsForm = (props:any)=>{
                 return(
                     <IonRow key = {i} className={'row_'+x.id}>
                         <IonCol  className="hover" size="1">
-                            <IonCheckbox onIonChange = {(e)=>{if(e.detail.checked){setSelected(x.id)}else{resetSelected(x.id)}}}></IonCheckbox>
+                            {/* <IonCheckbox onIonChange = {(e)=>{if(e.detail.checked){setSelected(x.id)}else{resetSelected(x.id)}}}></IonCheckbox> */}
                         </IonCol>
                         <IonCol>{x.id}</IonCol>
                         <IonCol>{x.qualification}</IonCol>
@@ -163,47 +154,12 @@ const EducationalDetailsForm = (props:any)=>{
                 )
             })
             combined=[headers, list]
-            setQualifications(combined)
+            setListSearch(combined)
         })
         .catch(error=>{
             var x:any = <div></div>
-            setQualifications(x)
+            setListSearch(x)
         })
-        
-    }
-   
-    const updateQualification = () =>{
-        var options:any=[]
-        fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=update_contact_qualification"+
-        "&updated_by="+props.contact_id+
-        "&id="+ddlQualification.current!.value+
-        "&level_id="+ddlLevel.current!.value+
-        "&grade_id="+ddlGrade.current!.value,
-        {
-            headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8"}
-        }
-        )
-        .then(response => response.json())
-        .then(data => {
-                callQualification()
-            })
-    }
-    const insertQualification = () =>{
-        var options:any=[]
-        fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=insert_qualification_table"+
-        "&contact_id="+props.userProperties.contact_id+
-        "&qualification_id="+ddlQualification.current!.value+
-        "&level_id="+ddlLevel.current!.value+
-        "&grade_id="+ddlGrade.current!.value+
-        "&subject_id="+ddlSubject.current!.value,
-        {
-            headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8"}
-        }
-        )
-        .then(response => response.json())
-        .then(data => {
-                callQualification()
-            })
     }
     const callCert =()=>{
         callListCert(51)
@@ -217,20 +173,20 @@ const EducationalDetailsForm = (props:any)=>{
     const callSubject=()=>{
         callListSubject(getSubjectParent)
     }
-
     React.useEffect(()=>{
-        callLevel()
+        callListSearch()
         callCert()
+        callLevel()
         callGrade()
-        callQualification()
         callSubject()
+
     },[])
     
     return(
-        <div className="education-box ion-heading">
+        <div className="search-box ion-heading">
             <IonHeader> 
                 <IonRow>
-                    <IonCol className="ion-text-bold size-20">Education Details</IonCol>
+                    <IonCol className="ion-text-bold size-20">Search User Details</IonCol>
                 </IonRow>
                 <IonRow>
                     <IonCol size="2">
@@ -242,32 +198,33 @@ const EducationalDetailsForm = (props:any)=>{
                     <IonCol size = "2">
                         <IonItem>
                             <IonLabel position= "floating">Level</IonLabel>
-                            <IonSelect onIonChange={(e)=>{setSubjectParent(e.detail.value);callListSubject(e.detail.value)}} ref={ddlLevel}>{getLevel}</IonSelect>
+                            <IonSelect defaultValue='0' onIonChange={(e)=>{setSubjectParent(e.detail.value);callListSubject(e.detail.value)}} ref={ddlLevel}>
+                                {getLevel}
+                            </IonSelect>
                         </IonItem>
                     </IonCol>
                     <IonCol size = "2">
                         <IonItem>
                             <IonLabel position= "floating">Subject</IonLabel>
-                            <IonSelect  ref={ddlSubject}>{getSubjectList}</IonSelect>
+                            <IonSelect defaultValue='0' ref={ddlSubject}>{getSubjectList}</IonSelect>
                         </IonItem>
                     </IonCol>
                     <IonCol size = "2">
                         <IonItem>
                             <IonLabel position= "floating">Grade</IonLabel>
-                            <IonSelect ref={ddlGrade}>{getGrade}</IonSelect>
+                            <IonSelect defaultValue='0' ref={ddlGrade}>{getGrade}</IonSelect>
                         </IonItem>
                     </IonCol>
                     <IonCol size="3">
-                        <IonButton onClick = {()=>{insertQualification()}}>Add Qualification</IonButton>
+                        <IonButton onClick = {()=>{callListSearch()}}>Search</IonButton>
                     </IonCol>
                 </IonRow>
             </IonHeader>
             <IonContent className="content-container">
-                {getQualifications}
+                {getListSearch}
             </IonContent>
         </div>
     )
 }
-export default EducationalDetailsForm
 
-// added Something
+export default Search

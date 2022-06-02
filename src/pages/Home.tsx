@@ -8,6 +8,7 @@ import EducationalDetailsForm from '../components/EducationalDetailsForm';
 
 import './Home.css';
 import LoginForm from '../components/LoginForm';
+import Search from '../components/Search';
 var userProperties:any  =[]
 const Home: React.FC = () => {
   const [hideListAdmin,showListAdmin]                           = useState<boolean>(false)
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
   const [getAdmin,setAdmin]                                     = useState<boolean>(false)
   const [getLogin,setLogin]                                     = useState<boolean>(false)
   const [getUser,setUser]                                       = useState<boolean>(false)
+  const [hideSearch,showSearch]                                 = useState<boolean>(false)
   
   const setView = (v:any)=>{
     resetView()
@@ -27,14 +29,17 @@ const Home: React.FC = () => {
       case 3: showDetailsForm(true); break;
       case 4: showEducationalDetailsForm(true); break;
       case 5: showLoginForm(true);break;
+      case 6: showSearch(true);break;
+
     }
   }
   const resetView = () =>{
     showListAdmin(false);
     showListContact(false);
     showDetailsForm(false);
-    showEducationalDetailsForm(false)
-    showLoginForm(false)
+    showEducationalDetailsForm(false);
+    showLoginForm(false);
+    showSearch(false);
   }
   React.useEffect(()=>{
     showLoginForm(true)
@@ -54,11 +59,12 @@ const Home: React.FC = () => {
         </IonHeader>
         <IonRow>
           {getLogin &&
-          <div>
+          <div className="div-style">
             {getAdmin && 
-            <div>
+            <div >
               <IonCol onClick={()=>{setView(1)}}className="hover">List Admin</IonCol>
               <IonCol onClick={()=>{setView(2)}} className="hover">List Contacts</IonCol>
+              <IonCol onClick={()=>{setView(6)}} className="hover">Search</IonCol>
             </div>
             }
             {getUser&&
@@ -99,6 +105,11 @@ const Home: React.FC = () => {
             {resetView();setLogin(true);setUser(true)}
             }
             }/></IonCol>
+        </IonRow>
+        }
+        {hideSearch &&
+        <IonRow>
+          <IonCol><Search/></IonCol>
         </IonRow>
         }
       </IonContent>

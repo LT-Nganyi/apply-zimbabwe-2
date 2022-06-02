@@ -1,6 +1,8 @@
 import { IonButton, IonCol, IonFooter, IonHeader, IonInput, IonItem, IonLabel, IonRow, IonSelectOption } from "@ionic/react"
 import React, { useDebugValue, useRef, useState } from "react"
+// import './LoginForm.css'
 let primaryhost:any= "https://www.dmzee.co.za/"
+
 
 const LoginForm = (props:any) =>{
 
