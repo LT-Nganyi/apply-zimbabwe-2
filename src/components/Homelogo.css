@@ -22,6 +22,7 @@
     margin-top: 30%;
   }
   .sign-in-button{
+    font-size: ;
 
   }
   .screen a {
@@ -292,7 +293,7 @@
   }
   
   .log-in {
-    color: var(--white);
+    color: white;
     font-family: var(--font-family-piersans-regular);
     font-size: var(--font-size-m);
     font-weight: 400;
@@ -302,6 +303,10 @@
     min-width: 40px;
     text-align: center;
     white-space: nowrap;
+  }
+  .log-in:hover{
+    cursor:pointer;
+    font-size: 1.1em;
   }
   
   .sign-in-1 {

@@ -127,8 +127,8 @@ const Homelogo=(props:any)=> {
                   </div>
                 </div>
                 <div className="sign-in-1">
-                  <div className="sign-in-button">
-                    sign in
+                  <div className="sign-in-button size-24">
+                    Sign In
                   </div>
                 </div>
               </div>
