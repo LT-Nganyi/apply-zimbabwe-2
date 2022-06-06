@@ -92,7 +92,7 @@ const Homelogo=()=> {
                 </div>
               </div>
             </div>
-            <img className="appzimb-logo" src ="appzimb.png"/>
+            <img className="appzimb-logo" src ="../../assets/images/appzimb.png"/>
           </div>
         </div>
       </div>
