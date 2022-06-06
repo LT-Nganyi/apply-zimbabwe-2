@@ -1,4 +1,4 @@
-import './Home2.css';
+import './Dmzee.css';
 
 // var Application = function(e:any) {
 // 	// event constants
@@ -2896,7 +2896,7 @@ import './Home2.css';
 // 	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
 // }
 
-const Home2: React.FC = () => {
+const Dmzee: React.FC = () => {
 
     return(
         <div className="sign_in">
@@ -2904,5 +2904,5 @@ const Home2: React.FC = () => {
         </div>
     )
 }
-export default Home2;
+export default Dmzee;
 
