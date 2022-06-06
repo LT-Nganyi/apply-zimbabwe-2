@@ -5,6 +5,8 @@ import ListContact from '../components/ListContact';
 import ListAdmin from '../components/ListAdmin';
 import DetailsForm from '../components/DetailsForm';
 import EducationalDetailsForm from '../components/EducationalDetailsForm';
+import Homelogo from '../components/Homelogo';
+
 
 import './Home.css';
 import LoginForm from '../components/LoginForm';
@@ -75,9 +77,10 @@ const Home: React.FC = () => {
         }
         {hideLoginForm &&
         <IonRow>
-          <IonCol><LoginForm/></IonCol>
+          <IonCol><Homelogo/></IonCol>
         </IonRow>
         }
+     
       </IonContent>
     </IonPage>
   );

@@ -1,0 +1,359 @@
+@font-face {
+    font-family: "Metropolis-Medium";
+    font-style: normal;
+    font-weight: 500;
+    src: url("https://fonts.animaapp.com/Metropolis-Medium") format("opentype");
+  }
+  @font-face {
+    font-family: "Metropolis-Bold";
+    font-style: normal;
+    font-weight: 700;
+    src: url("https://fonts.animaapp.com/Metropolis-Bold") format("opentype");
+  }
+  @font-face {
+    font-family: "PierSans-Regular";
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://fonts.animaapp.com/PierSans-Regular") format("opentype");
+  }
+  
+  .screen a {
+    display: contents;
+    text-decoration: none;
+  }
+  
+  .container-center-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    pointer-events: none;
+    width: 100%;
+  }
+  
+  .container-center-horizontal > * {
+    flex-shrink: 0;
+    pointer-events: auto;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  .sign-in {
+    align-items: flex-start;
+    background-color: var(--white);
+    display: flex;
+    height: 1080px;
+    overflow: hidden;
+    width: 1920px;
+  }
+  
+  .overlap-group1 {
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 1082px;
+    position: relative;
+    width: 1920px;
+  }
+  
+  .signup-form {
+    align-items: center;
+    display: flex;
+    height: 631px;
+    left: 303px;
+    min-width: 1307px;
+    position: absolute;
+    top: 256px;
+  }
+  
+  .flex-col {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 42.91px;
+    min-height: 434px;
+    width: 642px;
+  }
+  
+  .see-why-the-worlds {
+    color: rgba(22, 6, 55, 1);
+    font-family: var(--font-family-metropolis-bold);
+    font-size: 28px;
+    font-weight: 700;
+    height: 178px;
+    letter-spacing: 0;
+    line-height: 42px;
+    text-align: center;
+    width: 642px;
+  }
+  
+  .trusted-by {
+    align-items: center;
+    display: flex;
+    height: 21px;
+    margin-left: 96px;
+    margin-top: 17px;
+    min-width: 424px;
+  }
+  
+  .line-3 {
+    height: 1px;
+    margin-top: 3px;
+    object-fit: cover;
+    width: 144px;
+  }
+  
+  .trusted-by-1 {
+    align-self: flex-start;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-left: 24px;
+    margin-top: -1.5px;
+    min-height: 23px;
+    min-width: 75px;
+    white-space: nowrap;
+  }
+  
+  .line-4 {
+    height: 1px;
+    margin-left: 37px;
+    margin-top: 3px;
+    object-fit: cover;
+    width: 144px;
+  }
+  
+  .client-logos {
+    align-items: flex-end;
+    display: flex;
+    height: 156px;
+    margin-left: 49.08px;
+    margin-top: 62px;
+    min-width: 302px;
+    padding: 0px 0;
+  }
+  
+  .flex-col-1 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.22px;
+    min-height: 152px;
+    width: 136px;
+  }
+  
+  .accenture-4 {
+    height: 35px;
+    margin-left: 2.43px;
+    object-fit: cover;
+    width: 134px;
+  }
+  
+  .airbnb {
+    height: 41px;
+    margin-top: 76px;
+    object-fit: cover;
+    width: 130px;
+  }
+  
+  .flex-col-2 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-left: 102px;
+    min-height: 156px;
+    width: 63px;
+  }
+  
+  .react {
+    height: 56px;
+    object-fit: cover;
+    width: 63px;
+  }
+  
+  .sky-4 {
+    height: 32px;
+    margin-left: 3.93px;
+    margin-top: 67px;
+    object-fit: cover;
+    width: 54px;
+  }
+  
+  .overlap-group {
+    height: 631px;
+    margin-left: 185px;
+    position: relative;
+    width: 480px;
+  }
+  
+  .rectangle-373 {
+    background-color: var(--magnolia);
+    border-radius: 4px;
+    height: 591px;
+    left: 0;
+    position: absolute;
+    top: 40px;
+    width: 480px;
+  }
+  
+  .rectangle-374 {
+    background-color: var(--white);
+    border: 1px solid var(--magnolia);
+    border-radius: 4px;
+    box-shadow: 0px 10px 20px 
+  #74747429;
+    height: 591px;
+    left: 32px;
+    position: absolute;
+    top: 0;
+    width: 416px;
+  }
+  
+  .dont-have-an-account-sign-up {
+    color: var(--blue-ribbon);
+    font-family: var(--font-family-metropolis);
+    font-size: var(--font-size-m);
+    font-weight: 500;
+    left: 132px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    top: 544px;
+    white-space: nowrap;
+  }
+  
+  .span0 {
+    color: var(--manatee);
+    font-family: var(--font-family-metropolis-medium);
+  }
+  
+  .span1 {
+    color: var(--black);
+    font-family: var(--font-family-metropolis-medium);
+  }
+  
+  .span2 {
+    font-family: var(--font-family-metropolis-medium);
+    text-decoration: underline;
+  }
+  
+  .line-5 {
+    height: 1px;
+    left: 72px;
+    object-fit: cover;
+    position: absolute;
+    top: 526px;
+    width: 336px;
+  }
+  
+  .btn_google_signin_dark_normal_web2x {
+    height: 48px;
+    left: 129px;
+    object-fit: cover;
+    position: absolute;
+    top: 439px;
+    width: 199px;
+  }
+  
+  .or {
+    color: var(--black);
+    font-family: var(--font-family-metropolis-medium);
+    font-size: var(--font-size-l);
+    font-weight: 500;
+    left: 216px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    top: 395px;
+    white-space: nowrap;
+  }
+  
+  .b-tn_-primary {
+    align-items: flex-end;
+    background-color: 
+  #722ed1;
+    border-radius: 4px;
+    box-shadow: 0px 3px 6px 
+  #00000029;
+    display: flex;
+    height: 48px;
+    justify-content: flex-end;
+    left: 64px;
+    min-width: 344px;
+    padding: 10.5px 151px;
+    position: absolute;
+    top: 279px;
+  }
+  
+  .log-in {
+    color: var(--white);
+    font-family: var(--font-family-piersans-regular);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 14px;
+    min-height: 21px;
+    min-width: 40px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .sign-in-1 {
+    color: var(--black-rock);
+    font-family: var(--font-family-metropolis-bold);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    left: 206px;
+    letter-spacing: 0;
+    line-height: 27px;
+    position: absolute;
+    text-align: center;
+    top: 38px;
+    white-space: nowrap;
+  }
+  
+  .appzimb-logo {
+    height: 117px;
+    left: 443px;
+    object-fit: cover;
+    position: absolute;
+    top: 164px;
+    width: 475px;
+  }
+  
+  .password {
+    align-items: flex-start;
+    background-color: var(--white-2);
+    border-radius: 4px;
+    display: flex;
+    height: 48px;
+    left: 64px;
+    min-width: 344px;
+    padding: 11px 23px;
+    position: absolute;
+    top: 179px;
+  }
+  
+  .password-1 {
+    background-color: 
+  transparent;
+    border: 0;
+    height: 23px;
+    letter-spacing: 0;
+    line-height: 24px;
+    padding: 0;
+    white-space: nowrap;
+    width: 68px;
+  }
+  
+  .password-1::placeholder {
+    color: 
+  #8989a299;
+  }
+  
+  .password.email {
+    top: 108px;
+  }
+  
+  .password.email .password-1 {
+    width: 134px;
+  }
