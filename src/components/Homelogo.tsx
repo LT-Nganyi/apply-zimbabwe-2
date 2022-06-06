@@ -48,12 +48,12 @@ const Homelogo=()=> {
                 </div>
                 <div className="client-logos">
                   <div className="flex-col-1">
-                    <img className="accenture-4" src={accenture4} />
-                    <img className="airbnb" src={airbnb} />
+                    <img className="accenture-4" src="../../assets/images/zimsec.png" />
+                    <img className="airbnb" src="../../assets/images/minofinfo.png" />
                   </div>
                   <div className="flex-col-2">
-                    <img className="react" src={react} />
-                    <img className="sky-4" src={sky4} />
+                    <img className="react" src="../../assets/images/unep.png" />
+                    <img className="sky-4" src="../../assets/images/nationalartslogo.png" />
                   </div>
                 </div>
               </div>
@@ -68,7 +68,7 @@ const Homelogo=()=> {
                 <img className="line-5" src={line5} />
                 <img
                   className="btn_google_signin_dark_normal_web2x"
-                  src="../assets/btngoogle.png"
+                  src="../../assets/images/btngoogle.png" 
                 />
                 <div className="or">
                   {or}
