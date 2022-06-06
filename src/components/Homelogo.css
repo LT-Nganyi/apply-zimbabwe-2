@@ -16,7 +16,14 @@
     font-weight: 400;
     src: url("https://fonts.animaapp.com/PierSans-Regular") format("opentype");
   }
-  
+  .sign-in-input{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 30%;
+  }
+  .sign-in-button{
+
+  }
   .screen a {
     display: contents;
     text-decoration: none;

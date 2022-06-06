@@ -1,10 +1,42 @@
 import { IonButton, IonCol, IonFooter, IonHeader, IonInput, IonItem, IonLabel, IonRow, IonSelectOption } from "@ionic/react"
 import React, { useDebugValue, useRef, useState } from "react"
 import "./Homelogo.css"
-const Homelogo=()=> {
-    
-  
 
+
+const Homelogo=(props:any)=> {
+    
+  const txtEmail        = useRef<HTMLIonInputElement>(null);
+  const txtPassword     = useRef<HTMLIonInputElement>(null);
+
+  const callLogin = () => {
+    var options: any = [];
+    fetch(props.primaryhost + "education/dbconnect/dbdynamic.jsp?dbo=select_login" +
+        "&email=" + txtEmail.current!.value +
+        "&password=" + txtPassword.current!.value,
+        {
+            headers: { "content-type": "application/x-www-form-urlencoded; charset=UTF-8" }
+        }
+    )
+        .then(response => response.json())
+        .then(data => {
+            options.push(data.data);
+
+            if(data.data[0].exists==1){
+              var resultset:any = {
+                email:data.data[0].email,
+                forename:data.data[0].first_name,
+                middle_name:data.data[0].middle_name,
+                surname:data.data[0].surname,
+                user_id:data.data[0].contact_id,
+                contact_type_id:data.data[0].contact_type_id
+            
+              }
+              props.details(resultset)
+            }
+            // setGenderOption(list)
+        });
+
+};
   
   const SignIn=(props:any)=> {
     const {
@@ -73,22 +105,31 @@ const Homelogo=()=> {
                 <div className="or">
                   {or}
                 </div>
+                <div className="sign-in-input">
+                    <IonRow>
+                        <IonCol size='12'>
+                          <IonItem>
+                                <IonLabel position="floating">Email</IonLabel>
+                                <IonInput type="text" ref={txtEmail} />
+                            </IonItem> 
+                        </IonCol>
+                        <IonCol size="12">
+                          <IonItem>
+                              <IonLabel position="floating">Password</IonLabel>
+                              <IonInput type="password" ref={txtPassword} />
+                          </IonItem>
+                        </IonCol>
+                    </IonRow>
+                </div>
                 <div className="b-tn_-primary">
-                  <div className="log-in">
-                    {logIn}
+                  <div className="log-in" onClick={() => callLogin()}>
+                      Sign In
                   </div>
                 </div>
-                <Password
-                  inputType={password1Props.inputType}
-                  inputPlaceholder={password1Props.inputPlaceholder}
-                />
-                <Password
-                  inputType={password2Props.inputType}
-                  inputPlaceholder={password2Props.inputPlaceholder}
-                  className={password2Props.className}
-                />
                 <div className="sign-in-1">
-                  {signIn}
+                  <div className="sign-in-button">
+                    sign in
+                  </div>
                 </div>
               </div>
             </div>
