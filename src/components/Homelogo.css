@@ -149,14 +149,14 @@
   }
   
   .accenture-4 {
-    height: 35px;
+    height: auto;
     margin-left: 2.43px;
     object-fit: cover;
     width: 134px;
   }
   
   .airbnb {
-    height: 41px;
+    height: auto;
     margin-top: 76px;
     object-fit: cover;
     width: 130px;
@@ -172,13 +172,13 @@
   }
   
   .react {
-    height: 56px;
+    height: auto;
     object-fit: cover;
     width: 63px;
   }
   
   .sky-4 {
-    height: 32px;
+    height: auto;
     margin-left: 3.93px;
     margin-top: 67px;
     object-fit: cover;
@@ -216,7 +216,7 @@
   }
   
   .dont-have-an-account-sign-up {
-    color: var(--blue-ribbon);
+    color: rgba(21, 99, 255, 1);
     font-family: var(--font-family-metropolis);
     font-size: var(--font-size-m);
     font-weight: 500;
