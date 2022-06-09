@@ -56,11 +56,6 @@ const Home: React.FC = () => {
   },[])
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Apply Zimbabwe</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
@@ -99,12 +94,12 @@ const Home: React.FC = () => {
         }
         {hideDetailsForm &&
         <IonRow>
-          <IonCol><DetailsForm cancelSignUp={()=>{setView(5)}}/></IonCol>
+          <IonCol><DetailsForm resetParentView={()=>{resetView()}} cancelSignUp={()=>{setView(5)}}/></IonCol>
         </IonRow>
         }
         {hideEducationalDetailsForm &&
         <IonRow>
-          <IonCol><EducationalDetailsForm userProperties={userProperties}/></IonCol>
+          <IonCol><EducationalDetailsForm state={state}/></IonCol>
         </IonRow>
         }
         {/* {hideLoginForm &&
@@ -120,7 +115,9 @@ const Home: React.FC = () => {
         } */}
         {hideLoginForm &&
         <IonRow>
-          <IonCol><Homelogo primaryhost={state.primaryhost} 
+          <IonCol><Homelogo signUp={()=>{setView(3)}}
+            
+            primaryhost={state.primaryhost} 
             details={(d:any)=>{
             alert(d.email); 
             state.user_id         = d.user_id;

@@ -253,7 +253,7 @@ const DetailsForm = (props:any) =>{
                 <IonFooter>
                     <IonRow>
                         <IonCol className="ion-text-left">
-                            <IonButton onClick={()=>{props.cancelSignUp()}}>Cancel</IonButton>
+                            <IonButton onClick={()=>{props.resetParentView();props.cancelSignUp()}}>Cancel</IonButton>
                         </IonCol>
                         <IonCol className="ion-text-right">
                             <IonButton onClick={()=>showForm(1)}>Next</IonButton>

@@ -8,6 +8,7 @@ let primaryhost:any= "https://www.dmzee.co.za/"
 
 
 const EducationalDetailsForm = (props:any)=>{
+    alert(props.state.user_id)
     var ddlLevel:any                        =useRef<HTMLIonInputElement>(null)
     var ddlGrade:any                        =useRef<HTMLIonInputElement>(null)
     var ddlQualification:any                =useRef<HTMLIonInputElement>(null)
@@ -129,7 +130,7 @@ const EducationalDetailsForm = (props:any)=>{
     const callQualification = () =>{
         var options:any=[]
         fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=select_qualification"+
-        "&contact_id="+props.userProperties.contact_id,
+        "&contact_id="+props.state.user_id,
         {
             headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8"}
         }
@@ -191,7 +192,7 @@ const EducationalDetailsForm = (props:any)=>{
     const insertQualification = () =>{
         var options:any=[]
         fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=insert_qualification_table"+
-        "&contact_id="+props.userProperties.contact_id+
+        "&contact_id="+props.state.user_id+
         "&qualification_id="+ddlQualification.current!.value+
         "&level_id="+ddlLevel.current!.value+
         "&grade_id="+ddlGrade.current!.value+

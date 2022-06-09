@@ -3,14 +3,14 @@ import React, { useDebugValue, useRef, useState } from "react"
 import "./Homelogo.css"
 
 
-const Homelogo=(props:any)=> {
+const Homelogo=(master_props:any)=> {
     
   const txtEmail        = useRef<HTMLIonInputElement>(null);
   const txtPassword     = useRef<HTMLIonInputElement>(null);
 
   const callLogin = () => {
     var options: any = [];
-    fetch(props.primaryhost + "education/dbconnect/dbdynamic.jsp?dbo=select_login" +
+    fetch(master_props.primaryhost + "education/dbconnect/dbdynamic.jsp?dbo=select_login" +
         "&email=" + txtEmail.current!.value +
         "&password=" + txtPassword.current!.value,
         {
@@ -31,7 +31,7 @@ const Homelogo=(props:any)=> {
                 contact_type_id:data.data[0].contact_type_id
             
               }
-              props.details(resultset)
+              master_props.details(resultset)
             }
             // setGenderOption(list)
         });
@@ -124,6 +124,11 @@ const Homelogo=(props:any)=> {
                 <div className="b-tn_-primary">
                   <div className="log-in" onClick={() => callLogin()}>
                       Sign In
+                  </div>
+                </div>
+                <div className="b-tn_-secondary">
+                  <div className="log-in" onClick={() => master_props.signUp()}>
+                      Sign Up
                   </div>
                 </div>
                 <div className="sign-in-1">
