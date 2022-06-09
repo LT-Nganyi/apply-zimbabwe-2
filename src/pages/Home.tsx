@@ -89,7 +89,7 @@ const Home: React.FC = () => {
         }
         {hideDetailsForm &&
         <IonRow>
-          <IonCol><DetailsForm/></IonCol>
+          <IonCol><DetailsForm cancelSignUp={()=>{setView(5)}}/></IonCol>
         </IonRow>
         }
         {hideEducationalDetailsForm &&
@@ -99,7 +99,7 @@ const Home: React.FC = () => {
         }
         {hideLoginForm &&
         <IonRow>
-          <IonCol><LoginForm state={(e:any)=>{userProperties=e;
+          <IonCol><LoginForm signUp={()=>{setView(3)}} state={(e:any)=>{userProperties=e;
             if(e.contact_type_id==2 || e.contact_type_id==18){resetView();setAdmin(true);setLogin(true);setUser(true)} 
             else
             {resetView();setLogin(true);setUser(true)}

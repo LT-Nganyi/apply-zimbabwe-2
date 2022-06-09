@@ -3,7 +3,7 @@ import React, { useDebugValue, useRef, useState } from "react"
 import './DetailsForm.css'
 let primaryhost:any= "https://www.dmzee.co.za/"
 let contact_type_id:any = 2
-const DetailsForm = () =>{
+const DetailsForm = (props:any) =>{
     const[hideForm0,showForm0] =  useState<string>("show-form")
     const[hideForm1,showForm1] =  useState<string>("hide-form")
     const[hideForm2,showForm2] =  useState<string>("hide-form")
@@ -233,7 +233,7 @@ const DetailsForm = () =>{
             <div className={"details detail-0 "+hideForm0}>
                 <IonHeader>
                     <IonRow>
-                        <IonLabel className='section-color' >Contact Details</IonLabel>
+                        <IonLabel className='section-color' >Sign Up Details</IonLabel>
                     </IonRow>
                 </IonHeader>
                 <IonRow>
@@ -253,7 +253,7 @@ const DetailsForm = () =>{
                 <IonFooter>
                     <IonRow>
                         <IonCol className="ion-text-left">
-                            <IonButton>Cancel</IonButton>
+                            <IonButton onClick={()=>{props.cancelSignUp()}}>Cancel</IonButton>
                         </IonCol>
                         <IonCol className="ion-text-right">
                             <IonButton onClick={()=>showForm(1)}>Next</IonButton>

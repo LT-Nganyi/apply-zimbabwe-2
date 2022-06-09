@@ -31,34 +31,36 @@ const LoginForm = (props:any) =>{
         )
         .then(response => response.json())
         .then(data => {
-
-            var state:any   = {
-                contact_id:data.data[0].contact_id,
-                contact_type_id:data.data[0].contact_type_id,
-                email:data.data[0].email,
-                forename:data.data[0].forename,
-                surname:data.data[0].surname
-            }
-            props.state(state)
-            contactId       = data.data[0].contact_id
-            contactTypeId   = data.data[0].contact_type_id
-            email           = data.data[0].email
-            firstName       = data.data[0].forename
-            middleName      = data.data[0].middle_name
-            surname         = data.data[0].surname
-            mobileNumber    = data.data[0].number
-            salutationId    = data.data[0].salutation_id
-            idNumber        = data.data[0].id_number
-            idTypeId        = data.data[0].id_type_id
-            genderId        = data.data[0].gender_id
             
             
-            {data.data[0].exists == 0?
-                alert("Login Failed!")
-                :
-                alert("Login Successful, Welcome to Apply Zimbabwe "+contactId)
+            if(data.data[0].exists/1 == 0){
+                alert("Login Failed!")}
+            else{
+                var state:any   = {
+                    contact_id:data.data[0].contact_id,
+                    contact_type_id:data.data[0].contact_type_id,
+                    email:data.data[0].email,
+                    forename:data.data[0].forename,
+                    surname:data.data[0].surname
+                }
+                
+                contactId       = data.data[0].contact_id
+                contactTypeId   = data.data[0].contact_type_id
+                email           = data.data[0].email
+                firstName       = data.data[0].forename
+                middleName      = data.data[0].middle_name
+                surname         = data.data[0].surname
+                mobileNumber    = data.data[0].number
+                salutationId    = data.data[0].salutation_id
+                idNumber        = data.data[0].id_number
+                idTypeId        = data.data[0].id_type_id
+                genderId        = data.data[0].gender_id
+                alert("Login Successful, Welcome to Apply Zimbabwe ")
+                props.state(state)
             }
-        })
+   
+            }
+        )
         
     }
 
@@ -87,7 +89,7 @@ const LoginForm = (props:any) =>{
                 <IonFooter>
                     <IonRow>
                         <IonCol className="ion-text-left">
-                            <IonButton>Sign Up</IonButton>
+                            <IonButton onClick={()=>{props.signUp()}}>Sign Up</IonButton>
                         </IonCol>
                         <IonCol className="ion-text-right">
                             <IonButton onClick={()=>callLogin()}>Login</IonButton>
