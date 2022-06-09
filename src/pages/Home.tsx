@@ -9,7 +9,17 @@ import EducationalDetailsForm from '../components/EducationalDetailsForm';
 import './Home.css';
 import LoginForm from '../components/LoginForm';
 import Search from '../components/Search';
+import Homelogo from '../components/Homelogo';
 var userProperties:any  =[]
+var state:any ={
+  primaryhost: "https://www.dmzee.co.za/",
+  user_id:          0,
+  contact_type_id:  0,
+  forename:         '',
+  middle_name:      '',
+  surname:          '',
+  email:            '',
+}
 const Home: React.FC = () => {
   const [hideListAdmin,showListAdmin]                           = useState<boolean>(false)
   const [hideListContact,showListContact]                       = useState<boolean>(false)
@@ -97,14 +107,34 @@ const Home: React.FC = () => {
           <IonCol><EducationalDetailsForm userProperties={userProperties}/></IonCol>
         </IonRow>
         }
-        {hideLoginForm &&
+        {/* {hideLoginForm &&
         <IonRow>
           <IonCol><LoginForm signUp={()=>{setView(3)}} state={(e:any)=>{userProperties=e;
             if(e.contact_type_id==2 || e.contact_type_id==18){resetView();setAdmin(true);setLogin(true);setUser(true)} 
             else
             {resetView();setLogin(true);setUser(true)}
             }
-            }/></IonCol>
+            }/>
+            </IonCol>
+        </IonRow>
+        } */}
+        {hideLoginForm &&
+        <IonRow>
+          <IonCol><Homelogo primaryhost={state.primaryhost} 
+            details={(d:any)=>{
+            alert(d.email); 
+            state.user_id         = d.user_id;
+            state.contact_type_id = d.contact_type_id;
+            state.forename        = d.forename;
+            state.middle_name     = d.middle_name;
+            state.surname         = d.surname;
+            state.email           = d.email;
+            if(d.contact_type_id==2 || d.contact_type_id==18){resetView();setAdmin(true);setLogin(true);setUser(true)} 
+            else
+            {resetView();setLogin(true);setUser(true)}
+            }
+            }/>
+            </IonCol>
         </IonRow>
         }
         {hideSearch &&
