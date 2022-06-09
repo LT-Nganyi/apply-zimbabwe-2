@@ -17,6 +17,17 @@ const Search = ()=>{
     const [getSubjectList,setSubjectList]            =useState<HTMLIonSelectOptionElement>()
     const [getSubjectParent,setSubjectParent]        =useState<HTMLIonSelectOptionElement>()
     const [getListSearch,setListSearch]                 =useState<HTMLIonRowElement>()
+
+    const [getGradeValue,setGradeValue]                 =useState(0)
+    const [getQualificationValue,setQualificationValue] =useState(0)
+    const [getLevelValue,setLevelValue]                 =useState(0)
+    const [getSubjectValue,setSubjectValue]             =useState(0)
+
+    // ddlGrade.current!.value = 0
+    // ddlQualification.current!.value = 0
+    // ddlSubject.current!.value = 0
+    // ddlLevel.current!.value = 0
+
     const callListCert = (parent_id:any) =>{
         var options:any=[]
         fetch(primaryhost+"education/dbconnect/select.jsp?edu=select_list"+
@@ -112,14 +123,14 @@ const Search = ()=>{
     const callListSearch=()=>{
         var options:any=[]
         fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=search_contact_qualification"+
-        "&qualification_id="+ddlQualification.current!.value+
-        "&level_id="+ddlLevel.current!.value+
-        "&grade_id="+ddlGrade.current!.value+
-        "&subject_id="+ddlSubject.current!.value,
+        "&qualification_id="+getQualificationValue+
+        "&level_id="+getLevelValue+
+        "&grade_id_1="+getGradeValue+
+        "&subject_id="+getSubjectValue,
         // fetch(primaryhost+"education/dbconnect/dbdynamic.jsp?dbo=search_contact_qualification"+
         // "&qualification_id="+ddlQualification.current!.value+
         // "&level_id="+ddlLevel.current!.value+
-        // "&grade_id="+0+
+        // "&grade_id_1="+0+
         // "&subject_id="+0,
         {
             headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8"}
@@ -174,11 +185,11 @@ const Search = ()=>{
         callListSubject(getSubjectParent)
     }
     React.useEffect(()=>{
-        callListSearch()
+        // callListSearch()
         callCert()
-        callLevel()
+        // callLevel()
         callGrade()
-        callSubject()
+        // callSubject()
 
     },[])
     
@@ -192,13 +203,13 @@ const Search = ()=>{
                     <IonCol size="2">
                         <IonItem>
                             <IonLabel position= "floating">Qualification</IonLabel>
-                            <IonSelect onIonChange={(e)=>{setQual(e.detail.value);callListLevel(e.detail.value)}} ref={ddlQualification}>{getCertificate}</IonSelect>
+                            <IonSelect onIonChange={(e)=>{setQual(e.detail.value);callListLevel(e.detail.value);setQualificationValue(e.detail.value)}} ref={ddlQualification} >{getCertificate}</IonSelect>
                         </IonItem>
                     </IonCol>
                     <IonCol size = "2">
                         <IonItem>
                             <IonLabel position= "floating">Level</IonLabel>
-                            <IonSelect defaultValue='0' onIonChange={(e)=>{setSubjectParent(e.detail.value);callListSubject(e.detail.value)}} ref={ddlLevel}>
+                            <IonSelect defaultValue='0' onIonChange={(e)=>{setSubjectParent(e.detail.value);callListSubject(e.detail.value);setLevelValue(e.detail.value)}} ref={ddlLevel} >
                                 {getLevel}
                             </IonSelect>
                         </IonItem>
@@ -206,13 +217,13 @@ const Search = ()=>{
                     <IonCol size = "2">
                         <IonItem>
                             <IonLabel position= "floating">Subject</IonLabel>
-                            <IonSelect defaultValue='0' ref={ddlSubject}>{getSubjectList}</IonSelect>
+                            <IonSelect defaultValue='0'onIonChange={(e)=>{setSubjectValue(e.detail.value)}} ref={ddlSubject} >{getSubjectList}</IonSelect>
                         </IonItem>
                     </IonCol>
                     <IonCol size = "2">
                         <IonItem>
                             <IonLabel position= "floating">Grade</IonLabel>
-                            <IonSelect defaultValue='0' ref={ddlGrade}>{getGrade}</IonSelect>
+                            <IonSelect defaultValue='0'onIonChange={(e)=>{setGradeValue(e.detail.value)}} ref={ddlGrade} >{getGrade}</IonSelect>
                         </IonItem>
                     </IonCol>
                     <IonCol size="3">

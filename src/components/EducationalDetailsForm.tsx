@@ -8,7 +8,7 @@ let primaryhost:any= "https://www.dmzee.co.za/"
 
 
 const EducationalDetailsForm = (props:any)=>{
-    alert(props.state.user_id)
+    // alert(props.state.user_id)
     var ddlLevel:any                        =useRef<HTMLIonInputElement>(null)
     var ddlGrade:any                        =useRef<HTMLIonInputElement>(null)
     var ddlQualification:any                =useRef<HTMLIonInputElement>(null)

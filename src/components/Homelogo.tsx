@@ -95,7 +95,7 @@ const Homelogo=(master_props:any)=> {
                 <p className="dont-have-an-account-sign-up">
                   <span className="span0">{spanText1}</span>
                   <span className="span1">{spanText2}</span>
-                  <span className="span2">{spanText3}</span>
+                  <span className="span2" onClick={()=>{master_props.signUp()}}>{spanText3}</span>
                 </p>
                 <img className="line-5" src={line5} />
                 <img
@@ -124,11 +124,6 @@ const Homelogo=(master_props:any)=> {
                 <div className="b-tn_-primary">
                   <div className="log-in" onClick={() => callLogin()}>
                       Sign In
-                  </div>
-                </div>
-                <div className="b-tn_-secondary">
-                  <div className="log-in" onClick={() => master_props.signUp()}>
-                      Sign Up
                   </div>
                 </div>
                 <div className="sign-in-1">

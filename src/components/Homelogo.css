@@ -243,6 +243,10 @@ input:focus {
   font-family: var(--font-family-metropolis-medium);
   text-decoration: underline;
 }
+.span2:hover{
+  cursor: pointer;
+  color: purple;
+}
 
 .line-5 {
   height: 1px;
@@ -291,6 +295,7 @@ input:focus {
   position: absolute;
   top: 279px;
 }
+
 
 .b-tn_-secondary {
   align-items: flex-end;
