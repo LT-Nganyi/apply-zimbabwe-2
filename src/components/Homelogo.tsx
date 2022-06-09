@@ -168,7 +168,7 @@ const Homelogo=(props:any)=> {
   };
   
   const signInData = {
-    overlapGroup1: "path-1.png",
+    overlapGroup1: "../../assets/images/path-1.png",
     seeWhyTheWorlds: (
       <React.Fragment>
         See why the world’s best companies use Apply Zimbabwe <br />
