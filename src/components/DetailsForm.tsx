@@ -432,6 +432,9 @@ const DetailsForm = () =>{
                     </IonRow>
                 </IonFooter>
             </div>
+            <div>
+                <img src='./images/detailform.png'/>
+            </div>
             {/* <div>
                 <IonRow>
                     <IonCol size= "1">
