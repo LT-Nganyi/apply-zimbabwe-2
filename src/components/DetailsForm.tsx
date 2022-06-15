@@ -1,6 +1,8 @@
 import { IonButton, IonCol, IonFooter, IonHeader, IonInput, IonItem, IonLabel, IonRadio, IonRadioGroup, IonRow, IonSelect, IonSelectOption } from "@ionic/react"
+import { url } from "inspector"
 import React, { useDebugValue, useRef, useState } from "react"
 import './DetailsForm.css'
+import detailform from './images/detailform.png';
 let primaryhost:any= "https://www.dmzee.co.za/"
 let contact_type_id:any = 2
 const DetailsForm = () =>{
@@ -52,7 +54,7 @@ const DetailsForm = () =>{
     const [getIdTypeOption,setIdTypeOption] =useState<HTMLIonSelectOptionElement>()
     const [getGenderOption,setGenderOption] = useState<HTMLIonSelectOptionElement>()
     var qual:any
-
+   
     const callList = (parent_id:any) =>{
         var options:any=[]
         fetch(primaryhost+"education/dbconnect/select.jsp?edu=select_list"+
@@ -174,6 +176,7 @@ const DetailsForm = () =>{
     const callSalutation = ()=>{
         callList(19)
     }
+       
     const callTown = ()=>{
         callListTown(114)
     }
@@ -261,6 +264,8 @@ const DetailsForm = () =>{
                     </IonRow>
                 </IonFooter>
             </div>
+        
+            
             <div className={'details details-1 '+hideForm1}>
                 <IonHeader>
                     <IonRow>
@@ -433,8 +438,10 @@ const DetailsForm = () =>{
                 </IonFooter>
             </div>
             <div>
-                <img src='./images/detailform.png'/>
+                <img src="../../assets/images/blanker.png"/>
             </div>
+          
+            
             {/* <div>
                 <IonRow>
                     <IonCol size= "1">
@@ -448,6 +455,7 @@ const DetailsForm = () =>{
                 </IonRow>
             </div> */}
         </div>
+
         
     )
 }

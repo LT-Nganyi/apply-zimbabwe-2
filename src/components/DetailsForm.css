@@ -1,4 +1,6 @@
-
+.body{
+  font-family: 'Poppins';
+}
 .show-form{
   display: block;
 }
@@ -12,7 +14,7 @@
   height: 50vh;
   position: absolute;
   left: 30%;
-  top: 15%;
+  top: 30%;
 
 }
 .ion-text-bold{
