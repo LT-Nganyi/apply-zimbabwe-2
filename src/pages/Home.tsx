@@ -93,7 +93,7 @@ const Home: React.FC = () => {
         </IonRow>
         }
         {hideDetailsForm &&
-        <IonRow>
+        <IonRow className='details-css'>
           <IonCol><DetailsForm resetParentView={()=>{resetView()}} cancelSignUp={()=>{setView(5)}}/></IonCol>
         </IonRow>
         }

@@ -1,4 +1,26 @@
 
+.title{
+  text-align: center;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: medium;
+  font-weight: 500;
+  align-content: center;
+  align-items: center;
+}
+.back-btn{
+  margin-top: 30px;
+
+}
+
+.col-border{
+  border: 2px solid #8989A2;
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 30px;
+
+
+}
 .show-form{
   display: block;
 }
@@ -6,8 +28,9 @@
   display: none;
 }
 .details{
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  /* border:  1px solid #ccc;
+  border-radius: 10px; */
+  margin-top: 25vh;
   width: 40%;
   height: 50vh;
   position: absolute;

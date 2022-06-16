@@ -230,20 +230,20 @@ const DetailsForm = (props:any) =>{
     
     return(
         <div>
-            <div className={"details detail-0 "+hideForm0}>
+            <div className={"details detail-0  "+hideForm0}>
                 <IonHeader>
-                    <IonRow>
+                    <IonRow className="title size-40 ion-text-center" >
                         <IonLabel className='section-color' >Sign Up Details</IonLabel>
                     </IonRow>
                 </IonHeader>
                 <IonRow>
-                    <IonCol size="12">
+                    <IonCol className='col-border' size="12">
                         <IonItem>
                             <IonLabel position="floating">Email</IonLabel>
                             <IonInput type="text" ref={txtEmail} />
                         </IonItem>
                     </IonCol>
-                    <IonCol size="12">
+                    <IonCol className='col-border' size="12">
                         <IonItem>
                             <IonLabel position="floating">Mobile Phone/Telephone</IonLabel>
                             <IonInput type="text" ref={txtMobileNumber} />
@@ -251,7 +251,7 @@ const DetailsForm = (props:any) =>{
                     </IonCol>
                 </IonRow>
                 <IonFooter>
-                    <IonRow>
+                    <IonRow className='back-btn'>
                         <IonCol className="ion-text-left">
                             <IonButton onClick={()=>{props.resetParentView();props.cancelSignUp()}}>Cancel</IonButton>
                         </IonCol>
